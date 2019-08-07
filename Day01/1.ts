@@ -57,4 +57,7 @@ function defaultFullName1(firstName: string, lastName = "Smith") {
 function buildName(firstName: string, ...restOfName: string[]) {
     return firstName + " " + restOfName.join(" ");
   }
+  /*
+    函数重载：数根据传入不同的参数而返回不同类型的数据
+  */
   

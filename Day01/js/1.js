@@ -61,3 +61,6 @@ function buildName(firstName) {
     }
     return firstName + " " + restOfName.join(" ");
 }
+/*
+  函数重载：数根据传入不同的参数而返回不同类型的数据
+*/
