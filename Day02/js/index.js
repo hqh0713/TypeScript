@@ -44,26 +44,64 @@ function pig() {
 pig.prototype = new animal()
 pig.prototype.constructor = pig
 */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // es6
-// 构造类
-var animal = /** @class */ (function () {
-    function animal(n, l) {
-        this.name = n;
-        this.legs = l;
-    }
-    animal.prototype.setName = function (name) {
+// class animal{
+//   name:string; // 属性
+//   legs:number;
+//   constructor(n:string, l:number){ // 构造函数
+//     this.name = n;
+//     this.legs = l
+//   }
+//   setName(name:string):void {
+//     this.name = name;
+//   }
+//   getName():string {
+//     return this.name
+//   }
+//   run():void { // 方法
+//     console.log(this.name + '在跑~~')
+//   }
+// }
+// let a = new animal('Tom', 4)
+// a.run()
+// a.setName('Tonny')
+// a.getName()
+// a.run()
+// TypeScript 类 继承
+var Person = /** @class */ (function () {
+    function Person(name, nationality) {
         this.name = name;
+        this.nationality = nationality;
+    }
+    Person.prototype.getInfor = function () {
+        return this.name + "," + this.nationality;
     };
-    animal.prototype.getName = function () {
-        return this.name;
-    };
-    animal.prototype.run = function () {
-        console.log(this.name + '在跑~~');
-    };
-    return animal;
+    return Person;
 }());
-var a = new animal('Tom', 4);
-a.run(); // Tom在跑～～
-a.setName('Tonny');
-a.getName();
-a.run(); // Tonny在跑～～
+var Student = /** @class */ (function (_super) {
+    __extends(Student, _super);
+    function Student(name, nationality, school) {
+        var _this = _super.call(this, name, nationality) || this;
+        _this.school = school;
+        return _this;
+    }
+    Student.prototype.getInfor = function () {
+        return this.name + "," + this.nationality + "," + this.school;
+    };
+    return Student;
+}(Person));
+var person = new Person('tomm', 'china');
+console.log(person.getInfor());

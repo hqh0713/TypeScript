@@ -45,25 +45,50 @@ pig.prototype.constructor = pig
 */
 
 // es6
-class animal{
-  name:string; // 属性
-  legs:number;
-  constructor(n:string, l:number){ // 构造函数
-    this.name = n;
-    this.legs = l
-  }
-  setName(name:string):void {
+// class animal{
+//   name:string; // 属性
+//   legs:number;
+//   constructor(n:string, l:number){ // 构造函数
+//     this.name = n;
+//     this.legs = l
+//   }
+//   setName(name:string):void {
+//     this.name = name;
+//   }
+//   getName():string {
+//     return this.name
+//   }
+//   run():void { // 方法
+//     console.log(this.name + '在跑~~')
+//   }
+// }
+// let a = new animal('Tom', 4)
+// a.run()
+// a.setName('Tonny')
+// a.getName()
+// a.run()
+
+// TypeScript 类 继承
+class Person {
+  name:string;
+  nationality:string;
+  constructor(name:string, nationality:string) {
     this.name = name;
+    this.nationality = nationality;
   }
-  getName():string {
-    return this.name
-  }
-  run():void { // 方法
-    console.log(this.name + '在跑~~')
+  getInfor() {
+    return `${this.name},${this.nationality}`
   }
 }
-let a = new animal('Tom', 4)
-a.run()
-a.setName('Tonny')
-a.getName()
-a.run()
+class Student extends Person {
+  private school:string;
+  constructor(name:string, nationality:string, school:string) {
+    super(name, nationality)
+    this.school = school;
+  }
+  getInfor() {
+    return `${this.name},${this.nationality},${this.school}`
+  }
+}
+let person = new Person('tomm', 'china')
+console.log(person.getInfor())
